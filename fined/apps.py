@@ -1,4 +1,6 @@
 from django.apps import AppConfig
 
-class FinEdConfig(AppConfig):
-    name='fined'
+
+class BibloConfig(AppConfig):
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'fined'
