@@ -1,5 +1,9 @@
 {% load static %}
+<<<<<<< HEAD
 <html>
+=======
+<!DOCTYPE html>
+>>>>>>> 1860828192de2b003f031cabe0dad3d55f782c34
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,6 +16,16 @@
 
 </head>
 <body>
+<<<<<<< HEAD
+=======
+
+{% block mainmenu %}
+<!--<ul>-->
+<!--    {%for m in menu %}-->
+<!--    <li>{{m}}</li>-->
+<!--    {% endfor %}-->
+<!--</ul>-->
+>>>>>>> 1860828192de2b003f031cabe0dad3d55f782c34
    <div class="navbar11">
         <div class="menu">
             <a href="#" class="menuButton">about</a>
@@ -20,7 +34,11 @@
             <a href="#" class="menuButton">log in</a>
         </div>
 
+<<<<<<< HEAD
         <img src="https://images.squarespace-cdn.com/content/v1/5f50eef09ec472605c58d7dd/1599157504410-X71KENR4Z5AQOXMEUYHA/BLACK+FK+logo+PNG.png?format=1000w", width="50">
+=======
+        <img src="kiaa.webp", width="200">
+>>>>>>> 1860828192de2b003f031cabe0dad3d55f782c34
 
         <div class="menu1">
             <a href="#" class="menuButton">Дилеры</a>
@@ -28,6 +46,31 @@
         </div>
    </div>
 
+<<<<<<< HEAD
+=======
+    <div class="body">
+         <div class="k5"><h2>K5</h2></div>
+         <div class="menubody">
+    {% if cat_selected == 0 %}
+            <li class="selected">Все категории</li>
+    {% else %}
+             <li><a href="{% url 'home' %}">Все категории</li>
+    {% endif %}
+
+    {% for c in cats %}
+        {% if c.pk == cat_selected %}
+             <li class="selected">{{c.name}}</li>
+        {% else %}
+             <li><a href="{{ c.get_absolute_url }}">{{c.name}}</li>
+        {% endif %}
+    {% endfor %}
+         </div>
+
+    </div>
+
+{% endblock mainmenu %}
+
+>>>>>>> 1860828192de2b003f031cabe0dad3d55f782c34
 {% block content %}
 {% endblock %}
 

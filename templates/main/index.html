@@ -2,12 +2,35 @@
 {% load static %}
 {% block content %}
 <h1>{{title}}</h1>
+<<<<<<< HEAD
 <div style="display: flex; flex-direction: row; flex-wrap: wrap">
 
   {% for i in courses %}
   {#  Single Card Template:#}
   <div class="card" style="width: 18rem; margin: 10px">
     <img style="height: 180px; wight:350px; " src="{{ i.image }}" class="card-img-top" >
+=======
+<!--        <img style ="height:250px;"src="{% static 'main/img/logo.jpg' %}" alt="">-->
+<!--        <a class="btn-btn primary" href="">Submit</a>-->
+<!--<ul>-->
+<!--        {% for i in posts %}-->
+<!--        <li>-->
+<!--                <h2>{{i.name}}</h2>-->
+<!--                <img src="{{i.photo}}">-->
+<!--                <p>{{i.content}}</p>-->
+<!--                <p>{{i.author}}</p>-->
+<!--                <small>{{i.price}}</small>-->
+<!--                <hr>-->
+<!--        </li>-->
+<!--        {% endfor %}-->
+<!--</ul>-->
+<div style="display: flex; flex-direction: row; flex-wrap: wrap">
+
+  {% for i in posts %}
+  {#  Single Card Template:#}
+  <div class="card" style="width: 18rem; margin: 10px">
+    <img style="height: 150px; wight:350px; "src="{{ i.image }}" class="card-img-top" >
+>>>>>>> 1860828192de2b003f031cabe0dad3d55f782c34
     <div class="card-body">
       <div style="display: flex; flex-direction: row">
          <hr>
