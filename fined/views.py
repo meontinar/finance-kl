@@ -1,8 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from fined.models import Course
+
+
+menu = ["about", "Log In", "Categories"]
+
 def index(request):
-    return HttpResponse("Страница сайта Fined")
+    courses=Course.objects.all()
+    context ={
+        'courses': courses,
+        'menu': menu,
+        'title': 'Main Page',
+    }
+    return render(request, 'main/index.html',context=context)
+
 
 def categories(request, catid):
     print(request.GET)
