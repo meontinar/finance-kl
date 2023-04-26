@@ -1,0 +1,24 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+	<div class="card-deck">
+		{% for c in courses %}
+    <div class="card" style="width: 370px; height: 470px">
+		{% if c.image %}
+		<p><img style="width:350px" class="card-img-top" src="{{c.image.url}}"></p>
+		{% endif %}
+    <div class="card-body">
+        <h3 class="card-title">{{c.title}}</h3>
+        <p class="card-text">
+		   {% autoescape on %}
+	       {{c.content|linebreaks|truncatewords:50}}
+	       {% endautoescape %}</p>
+        <p class="card-text"><small class="text-muted">Категория: {{c.cat}}</small></p>
+        <p class="card-text"><small class="text-muted">{{c.time_update|date:"d-m-Y H:i:s"}}</small></p>
+		<a href="{{ c.get_absolute_url }}" class="btn btn-primary">Читать дальше</a>
+    </div>
+    </div>
+	{% endfor %}
+	</div>
+
+{% endblock %}

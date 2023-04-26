@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="album py-2 px-5 mx-3 bg-light">
+        <div class="col-md-12">
+            <div class="row row-cols-1 row-cols-2 row-cols-md-3 g-3">
+                <div class="card" style="width: 64rem; height: 45rem; padding: 10px">
+                    <table><tr>
+                        <td>{% if course.image %}
+                            <p><img class="card-img-top" style="margin-left: 55px;margin-bottom: 40px;; margin-top: 70px; width: 250px" src="{{course.image.url}}"></p></td>
+                            {% endif %}
+                        <td><div class="card-body" style="margin-left: 45px; color: #e75e8d">
+                                <h3 class="card-title" style="margin-bottom: 10px; margin-top: 50px; color: #e75e8d">{{course.title}}</h3>
+                            <h5 class="card-text" style="margin-top: 10px;color: #e75e8d">{{course.author}}</h5>
+                            {% autoescape on %}
+                            <p style="color: #e75e8d">{{course.content|linebreaks|truncatewords:50}}</p>
+                            {% endautoescape %}
+                                <a class="btn btn-outline-danger" style="width: 100px; margin-top: 20px;" href="#">Читать дальше</a>
+                            </div>
+                        </td>
+                        </tr>
+                    </table>
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
