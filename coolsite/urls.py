@@ -18,8 +18,6 @@ from django.contrib import admin
 from django.urls import path, include
 
 from coolsite import settings
-from fined.views import index
-from fined.views import categories
 
 handler400 ='fined.views.handler400'
 handler403 ='fined.views.handler403'
@@ -30,8 +28,14 @@ handler500 ='fined.views.handler500'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('captcha/', include('captcha.urls')),
     path('', include('fined.urls')),
 
 ]
 if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include('debug_toolbar.urls')),
+    ] + urlpatterns
+
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

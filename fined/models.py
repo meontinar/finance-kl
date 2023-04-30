@@ -1,36 +1,31 @@
 from django.db import models
 from django.urls import reverse
-
-
-<<<<<<< HEAD
 class Course(models.Model):
     c_id=models.IntegerField
-    title=models.CharField(max_length=255)
-    image=models.ImageField(upload_to="photos/%Y/%m/%d/")
-    content=models.TextField(blank=True)
-    author=models.TextField(blank=True)
-    time_create=models.DateTimeField(auto_now_add=True)
-    time_update=models.DateTimeField(auto_now=True)
-=======
-class Product(models.Model):
-    product_id=models.IntegerField
-    name=models.CharField(max_length=255)
-    image=models.ImageField(upload_to="photos/%Y/%m/%d/")
-    content=models.TextField(blank=True)
-    author=models.TextField(blank=True)
-    price=models.IntegerField
-    cat=models.ForeignKey('Category', on_delete=models.PROTECT, null=True)
+    title=models.CharField(max_length=255, verbose_name="Заголовок")
+    slug=models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
+    image=models.ImageField(upload_to="photos/%Y/%m/%d/", verbose_name="Изображение")
+    content=models.TextField(blank=True, verbose_name="Текст")
+    author=models.TextField(blank=True, verbose_name="Автор")
+    time_create=models.DateTimeField(auto_now_add=True, verbose_name="Создано")
+    time_update=models.DateTimeField(auto_now=True, verbose_name="Обновлено")
+    cat = models.ForeignKey('Category', on_delete=models.PROTECT, null = True, verbose_name="Категории")
+    def __str__(self):
+        return self.title
+    def get_absolute_url(self):
+        return reverse('course', kwargs={'cour_slug': self.slug})
 
+    class Meta:
+        verbose_name_plural = 'Известные курсы'
+        ordering = ['id']
+
+class Category(models.Model):
+    name = models.CharField(max_length=100, db_index=True, verbose_name = "Название")
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="URL")
     def __str__(self):
         return self.name
     def get_absolute_url(self):
-      return reverse('post', kwargs={'post_id': self.pk})
-
-class Category(models.Model):
-    name=models.CharField(max_length=255, db_index=True)
-    def __str__(self):
-          return self.name
-
-    def get_absolute_url(self):
-      return reverse('category', kwargs={'cat_id': self.pk})
->>>>>>> 1860828192de2b003f031cabe0dad3d55f782c34
+        return reverse('category', kwargs={'cat_slug': self.slug})
+    class Meta:
+        verbose_name_plural = 'Категории'
+        ordering = ['id']

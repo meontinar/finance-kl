@@ -1,23 +1,18 @@
 from django.urls import path
-<<<<<<< HEAD
+from django.views.decorators.cache import cache_page
 from .views import *
 
 urlpatterns = [
-    path('', index, name='home'),
-    path('cats/<int:catid>/', categories)
+    # path('api/v1/courselist/', CourseViewSet.as_view({'get': 'list'})),
+    path('', CourseHome.as_view(), name='home'),
+    path('courses/', Courses.as_view(), name='courses'),
+    path('programs/', CourseHome.as_view(), name='pricing'),
+    path('category/<slug:cat_slug>/', CourseCategory.as_view(), name='category'),
+    path('course/<slug:cour_slug>/', ShowCourse.as_view(), name='course'),
+    path('about/', about, name='about'),
+    path('addcourse/', AddCourse.as_view(), name='add_course'),
+    path('contact/', ContactFormView.as_view(), name='contact'),
+    path('login/', LoginUser.as_view(), name='login'),
+    path('logout/', logout_user, name='logout'),
+    path('register/', RegisterUser.as_view(), name='register'),
 ]
-=======
-from django.urls import path, include
-from .views import *
-
-urlpatterns = [
-path('', index, name='home'),
-path('about/', about, name='about'),
-path('addpage/', addpage, name='addpage'),
-path('contact/', contact, name='contact'),
-path('login/', login, name='login'),
-path('category/<int:cat_id>/', show_category, name='category'),
-
-# path('cat/<slug:catid>/', categories),
-]
->>>>>>> 1860828192de2b003f031cabe0dad3d55f782c34
